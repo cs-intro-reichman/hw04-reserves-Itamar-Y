@@ -1,26 +1,112 @@
 public class ArrayOps {
     public static void main(String[] args) {
-        
+
+        int[] array1 = {0, 1, 2, 3, 4, 6};
+        int[] array2 =  {2, 14, 4, 6, 14, 5, 8, 11, 2, 8}; // for testing
+        System.out.println(array1);
+
+        System.out.println(findMissingInt(array1));
+
+        System.out.println(secondMaxValue(array2));
+
+        int[] arrtest1 = {2, 2, 4, 7, 8, 3, 2};
+        int[] arrtest2 = {8, 2, 7, 7, 3};
+        System.out.println(containsTheSameElements(arrtest1, arrtest2));
+
+        int[] array4 = {1, -2, 6, 9, 8};
+        System.out.println(isSorted(array4));
+
     }
     
     public static int findMissingInt (int [] array) {
-        // Write your code here:
-        return -1;
+        int missing = 0;
+        int actualsum =0;
+        int expectedsum =0;
+       
+        for (int i = 0; i < array.length; i++) {
+            actualsum = actualsum + array[i];
+            } 
+            for (int j = 0; j <= array.length; j++)
+            expectedsum += j;
+         
+        missing =  expectedsum - actualsum;
+
+        return missing;
     }
 
     public static int secondMaxValue(int [] array) {
-        // Write your code here:
-        return 0;
-    }
+        int max = array[0];
+        int smax = array[0];
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            } }
+        for (int j = 0; j < array.length; j++) {
+            for (int i = 0; i < array.length; i++){
+                if (array[j] == max && array[j] == array[i] && j != i ) {
+                    smax = array[j];
+                } else {
+                    if (array[j] > smax && array[j] != max) {
+                        smax = array[j];
+
+                }
+            }}}
+            return smax;
+           
+        }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {
-        // Write your code here:
-        return false;
+
+    for (int i : array1) {
+        boolean found = false;
+        for (int j : array2) {
+            if (i == j) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false;
+        }
+    }
+    for (int i : array2) {
+        boolean found = false;
+        for (int j : array1) {
+            if (i == j) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            return false; 
+        }
     }
 
-    public static boolean isSorted(int [] array) {
-        // Write your code here:
-        return false;
-    }
+    return true; 
+}
 
+            
+    public static boolean isSorted (int [] array) {
+        boolean sorted = true;
+        int n = array.length;
+        if (array[0] > array[n-1]) {
+            for (int i = 0; i < n-1; i++){
+                if (array[i] < array[i+1]) {
+                    sorted = false;
+                    break;
+            } }
+        }
+        if (array[0] < array[n-1]) {
+        for (int i = 0; i < n-1; i++){
+            if (array[i] > array[i+1]) {
+                sorted = false;
+                break;
+        } } }
+        if (array[0] == array[n-1]) {
+          sorted = false;
+            } 
+        
+        return sorted;
+    } 
 }
