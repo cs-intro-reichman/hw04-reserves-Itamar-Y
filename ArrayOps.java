@@ -1,19 +1,19 @@
 public class ArrayOps {
     public static void main(String[] args) {
 
-        int[] array1 = {0, 1, 2, 3, 4, 6};
-        int[] array2 =  {2, 14, 4, 6, 14, 5, 8, 11, 2, 8}; // for testing
+        int[] array1 = {0, 1, 2, 3, 4, 6}; // for testing
+        int[] array2 =  {1,-2,3,-4,5}; // for testing
         System.out.println(array1);
 
         System.out.println(findMissingInt(array1));
 
         System.out.println(secondMaxValue(array2));
 
-        int[] arrtest1 = {2, 2, 4, 7, 8, 3, 2};
-        int[] arrtest2 = {8, 2, 7, 7, 3};
+        int[] arrtest1 = {2, 2, 4, 7, 8, 3, 2}; // for testing
+        int[] arrtest2 = {8, 2, 7, 7, 3}; // for testing
         System.out.println(containsTheSameElements(arrtest1, arrtest2));
 
-        int[] array4 = {1, -2, 6, 9, 8};
+        int[] array4 = {3, 2, 1}; // for testing
         System.out.println(isSorted(array4));
 
     }
@@ -52,8 +52,16 @@ public class ArrayOps {
 
                 }
             }}}
+            
+        // for (int i = 0; i < array.length; i++) {
+        //     if (array[i] > max) {
+        //         smax = max; // Update second max to previous max
+        //         max = array[i];
+        //     } else if (array[i] > smax && array[i] != max) {
+        //         smax = array[i];
+        //     }
+        // }
             return smax;
-           
         }
 
     public static boolean containsTheSameElements(int [] array1,int [] array2) {

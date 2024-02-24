@@ -22,21 +22,94 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        
+        // String strtest = "One TWo tHRee world";
+        // System.out.println(capVowelsLowRest(strtest));
+        // String strtest2 = "  Intro to coMPUter sCIEncE ";
+        // System.out.println(camelCase(strtest2));
+        // String strtest3 = "Hello world";
+        // char ctest = 0;
+        // System.out.println(allIndexOf(strtest3, ctest));
     }
 
     public static String capVowelsLowRest (String string) {
-        // Write your code here:
-        return "";
+        char[] vowels = {'A', 'a', 'E', 'e', 'U', 'u', 'I', 'i', 'O', 'o'};
+        int n = string.length();
+        String str1 = "";
+        
+        for (int i = 0; i < n; i++) {
+            char c = string.charAt(i);
+    
+            boolean isVowel = false;
+            for (int j = 0; j < vowels.length; j++) {
+                if (c == vowels[j]) {
+                    isVowel = true;
+                    break;
+                }
+            }
+    
+            if (isVowel) {
+                if (c >= 'a') {
+                    c = (char) (c - 'a' + 'A');
+                }
+            } else {
+                if (c <= 'Z' && c >= 'A') {
+                    c = (char) (c - 'A' + 'a');
+                }
+            }
+            str1 += c;
+        } return str1;
     }
 
     public static String camelCase (String string) {
-        // Write your code here:
-        return "";
-    }
+        int n = string.length();
+        String str1 = "";
+        String str2 = "";
+        boolean capitalizeNext = false;
+        
+        for (int i = 0; i < n; i++) {
+            char c = string.charAt(i);
+            if (c >= 'A' && c <= 'Z') {
+                c = (char) (c - 'A' + 'a');
+            } 
+            str1 += c;
+        }  
 
-    public static int[] allIndexOf (String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        for (int i = 0; i < n; i++) {
+            char c = str1.charAt(i);
+            if (c >= 'a' && c <= 'z') {
+                if (capitalizeNext) {
+                    c = (char) (c - 'a' + 'A');
+                    capitalizeNext = false;
+                }
+                str2 += c;
+            } else if (c == ' ') {
+                capitalizeNext = true;
+            }
+        }
+        if (str2.charAt(0) >= 'A' && str2.charAt(0) <= 'Z') {
+            char c = str2.charAt(0);
+            c = (char) (c - 'A' + 'a');
+            str2 = c + str2.substring(1);
+        }
+        return str2;
     }
+        
+    
+
+    // public static int[] allIndexOf (String string, char chr) {
+    //     int[] indexed;
+    //     int n = string.length();
+    //     int counter = 0;
+
+    //     for (int i = 0; i < n; i++) {
+    //         if (string.charAt(i) == chr) {
+    //             counter++;
+    //         }
+            
+    //     }
+    //     // indexed = new int[counter];
+
+
+    //     return new int[1];
+    // }
 }
