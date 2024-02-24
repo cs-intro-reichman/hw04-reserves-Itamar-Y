@@ -22,20 +22,21 @@ public class StringOps {
     //////                                               ///////
     ////////////////////////////////////////////////////////////
     public static void main(String[] args) {
-        // String strtest = "One TWo tHRee world";
-        // System.out.println(capVowelsLowRest(strtest));
-        // String strtest2 = "  Intro to coMPUter sCIEncE ";
-        // System.out.println(camelCase(strtest2));
-        // String strtest3 = "Hello world";
-        // char ctest = 0;
-        // System.out.println(allIndexOf(strtest3, ctest));
+        String strtest = "One TWo tHRee world";
+        System.out.println(capVowelsLowRest(strtest));
+        String strtest2 = "  Intro to coMPUter sCIEncE ";
+        System.out.println(camelCase(strtest2));
+        String strtest3 = "Hello world";
+        char ctest = 'l';
+        System.out.println (toString(allIndexOf(strtest3, ctest)));
+        
     }
 
     public static String capVowelsLowRest (String string) {
         char[] vowels = {'A', 'a', 'E', 'e', 'U', 'u', 'I', 'i', 'O', 'o'};
         int n = string.length();
         String str1 = "";
-        
+
         for (int i = 0; i < n; i++) {
             char c = string.charAt(i);
     
@@ -96,20 +97,40 @@ public class StringOps {
         
     
 
-    // public static int[] allIndexOf (String string, char chr) {
-    //     int[] indexed;
-    //     int n = string.length();
-    //     int counter = 0;
+    public static int[] allIndexOf (String string, char chr) {
+        int[] indexed;
+        int n = string.length();
+        int counter = 0;
 
-    //     for (int i = 0; i < n; i++) {
-    //         if (string.charAt(i) == chr) {
-    //             counter++;
-    //         }
-            
-    //     }
-    //     // indexed = new int[counter];
+        for (int i = 0; i < n; i++) {
+            if (string.charAt(i) == chr) {
+                counter++;
+            }
+        }
+        indexed = new int[counter];
+        int j = 0;
+        for (int i = 0; i < n; i++) {
+            if (string.charAt(i) == chr) {
+                indexed[j] = i;
+                j++; 
+            }
+        }
 
+        return indexed;
+    }
 
-    //     return new int[1];
-    // }
-}
+    public static String toString (int[] indexed) {
+        String str = "Output : {";
+        int arraylength = indexed.length;
+
+        for (int i =0; i < arraylength; i++) {
+            if (i == arraylength -1) {
+                str += i;
+            } else {
+            str += i + ", ";
+            }
+        }
+        str += "}";
+        return str;
+    }
+}   
